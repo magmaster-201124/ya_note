@@ -94,7 +94,7 @@ class TestRoutes(TestCase):
         self.assertEqual(self.note.slug, self.add_data['slug'])
 
     def test_user_cant_edit_not_his_note(self):
-        """Пользователь может отредактировать чужую заметку."""
+        """Пользователь не может отредактировать чужую заметку."""
         url = reverse('notes:edit', args=(self.note.slug,))
         self.user2_client.post(url, self.add_data)
         self.note.refresh_from_db()
